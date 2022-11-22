@@ -17,7 +17,6 @@ function Register({ setUser }) {
       name,
       image,
     };
-    console.log(newUser);
     fetch(`/users`, {
       method: "POST",
       headers: {
@@ -26,7 +25,7 @@ function Register({ setUser }) {
       body: JSON.stringify(newUser),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => setUser(user));
+        res.json().then((user) => console.log(user));
         navigate("/login");
       } else {
         res.json().then((event) => alert(`Sign Up: ${event.error}`));

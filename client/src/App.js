@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route exact path="/" element={<h1>HomePage</h1>} />
 
