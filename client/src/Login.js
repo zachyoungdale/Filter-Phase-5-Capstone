@@ -17,11 +17,13 @@ function Login({ setUser }) {
       body: JSON.stringify(user),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => console.log(user));
+        res.json().then((user) => setUser(user));
       } else {
         res.json().then((event) => alert(event.error));
       }
     });
+    setUsername("");
+    setPassword("");
   }
   return (
     <form onSubmit={handleLogin}>
