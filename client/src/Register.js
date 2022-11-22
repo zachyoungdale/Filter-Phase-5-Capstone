@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function Register({ setUser }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  const navigate = useNavigate();
 
   function handleRegister(event) {
     event.preventDefault();
@@ -24,8 +27,9 @@ function Register({ setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => setUser(user));
+        navigate("/login");
       } else {
-        res.json().then((event) => console.log(`Sign Up: ${event.error}`));
+        res.json().then((event) => alert(`Sign Up: ${event.error}`));
       }
     });
   }

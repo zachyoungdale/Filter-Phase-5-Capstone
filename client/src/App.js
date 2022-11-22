@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
+import NavBar from "./NavBar";
 function App() {
   const [user, setUser] = useState(null);
   const [needToRegister, setNeedToRegister] = useState(false);
@@ -17,8 +19,14 @@ function App() {
 
   return (
     <div>
-      <Login setUser={setUser} />
-      <Register setUser={setUser} />
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<h1>HomePage</h1>} />
+
+        <Route path="/login" element={<Login setUser={setUser} />} />
+
+        <Route path="/register" element={<Register setUser={setUser} />} />
+      </Routes>
     </div>
   );
 }
