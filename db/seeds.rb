@@ -5,3 +5,46 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Seeding cities..."
+
+stx = City.create(name: "San Antonio, TX")
+atx = City.create(name: "Austin, TX")
+dtx = City.create(name: "Dallas, TX")
+htx = City.create(name: "Houston, TX")
+la = City.create(name: "Los Angeles, CA")
+ny = City.create(name: "New York, NY")
+nash = City.create(name: "Nashville, TN")
+sf = City.create(name: "San Francisco, CA")
+lyh = City.create(name: "Lynchburg, VA")
+chi = City.create(name: "Chicago, IL")
+
+puts "Seeding Coffee Shops..."
+
+merit1 = CoffeeShop.create(name: "Merit Coffee", address: "700 East Sonterra Boulevard, San Antonio, TX, 78258", city_id: stx.id, website: "https://www.meritcoffee.com", socials: "https://www.instagram.com/meritcoffee/?hl=en")
+indy = CoffeeShop.create(name: "Indy Coffee Club", address: "7114 UTSA Boulevard, San Antonio, TX, 78249", city_id: stx.id, website: "https://www.indycoffeeco.com", socials: "https://www.instagram.com/indycoffeeclub/?hl=en")
+estate = CoffeeShop.create(name: "Estate Coffee Company", address: "1320 East Houston Street, San Antonio, TX, 78205", city_id: stx.id, website: "https://www.estatecoffeecompany.com", socials: "https://www.instagram.com/estatecoffeeco/")
+merit2 = CoffeeShop.create(name: "Merit Coffee", address: "4615 North Lamar Boulevard, Austin, TX, 78751", city_id: atx.id, website: "https://www.meritcoffee.com", socials: "https://www.instagram.com/meritcoffee/?hl=en")
+houndstooth = CoffeeShop.create(name: "Houndstooth Coffee", address: "4200 N Lamar Blvd, Austin, TX, 78756", city_id: atx.id, website: "https://www.houndstoothcoffee.com", socials: "https://www.instagram.com/houndstoothcoffee/")
+cultivar = CoffeeShop.create(name: "Cultivar Coffee Bar", address: "313 West Jefferson Boulevard, Dallas, TX, 75208", city_id: dtx.id, website: "https://www.cultivarcoffee.com/", socials: "https://www.instagram.com/cultivarcoffee/")
+lemma = CoffeeShop.create(name: "Lemma Coffee Roasters", address: "1014 South Broadway Street, Carrollton, TX, 75006", city_id: dtx.id, website: "https://www.lemmacoffeeco.com/", socials: "https://www.instagram.com/lemmacoffeeco/")
+southside = CoffeeShop.create(name: "Southside Espresso", address: "904 Westheimer Road, Houston, TX, 77006", city_id: htx.id, website: "https://www.southsideespresso.com/", socials: "https://www.instagram.com/southsideespresso/")
+throughgood = CoffeeShop.create(name: "Throughgood Coffee", address: "732 West 27th Street, Houston, TX, 77008", city_id: htx.id, website: "https://www.throughgoodcoffeeonline.com/", socials: "https://www.facebook.com/Throughgoodcoffee/")
+dayglow = CoffeeShop.create(name: "Dayglow", address: "866 Huntley Drive, West Hollywood, CA, 90069", city_id: la.id, website: "https://dayglow.coffee/", socials: "https://www.instagram.com/Dayglowcoffee/")
+found = CoffeeShop.create(name: "Found Coffee", address: "1355 Colorado Boulevard, Los Angeles, CA, 90041", city_id: la.id, website: "http://www.foundcoffeela.com/", socials: "https://www.instagram.com/foundcoffeela/")
+sey = CoffeeShop.create(name: "Sey Coffee", address: "18 Grattan Street, Brooklyn, NY, 11206", city_id: ny.id, website: "https://www.seycoffee.com/", socials: "https://www.instagram.com/seycoffee/")
+la_cabra = CoffeeShop.create(name: "La Cabra", address: "2nd Avenue, New York, NY, 10003", city_id: ny.id, website: "https://www.lacabra.dk/", socials: "https://www.instagram.com/lacabracoffee/")
+sump = CoffeeShop.create(name: "Sump Coffee", address: "8 City Blvd Ste 103, Nashville, TN, 37209", city_id: nash.id, website: "https://www.sumpcoffee.com/", socials: "https://www.instagram.com/sumpcoffee/")
+barista_parlor = CoffeeShop.create(name: "Barista Parlor", address: "519 Gallatin Avenue, Nashville, TN, 37206", city_id: nash.id, website: "https://baristaparlor.com/", socials: "https://www.instagram.com/baristaparlor/?hl=en")
+saint_frank = CoffeeShop.create(name: "Saint Frank Coffee", address: "2340 Polk Street, San Francisco, CA, 94109", city_id: sf.id, website: "https://www.saintfrankcoffee.com/", socials: "https://www.instagram.com/saintfrankcoffee/")
+sightglass = CoffeeShop.create(name: "Sightglass Coffee", address: "3014 20th Street, San Francisco, CA, 94110", city_id: sf.id, website: "https://sightglasscoffee.com/", socials: "https://www.instagram.com/sightglass/")
+golf_park = CoffeeShop.create(name: "Golf Park Coffee Co.", address: "2306 Bedford Avenue, Lynchburg, VA, 24503", city_id: lyh.id, website: "https://www.golfparkcoffee.com/", socials: "https://www.instagram.com/golfparkcoffee/")
+third_wave = CoffeeShop.create(name: "Third Wave Coffee", address: "16955 Forest Road, Forest, VA, 24551", city_id: lyh.id, website: "https://third-wave.coffee/", socials: "https://www.instagram.com/third_wave_coffee/?hl=en")
+flw = CoffeeShop.create(name: "Four Letter Word Coffee", address: "3022 West Diversey Avenue, Chicago, IL, 60647", city_id: chi.id, website: "https://www.4lwcoffee.com/", socials: "https://www.instagram.com/4lwcoffee/")
+intelligentsia = CoffeeShop.create(name: "Intelligentsia Coffee", address: "North Broadway, Chicago, IL, 60657", city_id: chi.id, website: "https://www.intelligentsia.com/", socials: "https://www.instagram.com/intelligentsiacoffee/")
+
+puts "Done Seeding!"
+
+
+
+
