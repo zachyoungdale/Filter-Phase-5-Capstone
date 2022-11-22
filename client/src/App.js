@@ -1,21 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { useState, useEffect } from "react";
-
+import Login from "./Login";
+import Register from "./Register";
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
+  const [needToRegister, setNeedToRegister] = useState(false);
 
   useEffect(() => {
-    fetch("/hello")
-      .then((res) => res.json())
-      .then((data) => setCount(data.count));
+    fetch("/auth").then((res) => {
+      if (res.ok) {
+        res.json().then((currentUser) => setUser(currentUser));
+      }
+    });
   }, []);
 
+  console.log(user);
+
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
+    <div>
+      <Login setUser={setUser} />
+      <Register setUser={setUser} />
     </div>
   );
 }
-
 export default App;
