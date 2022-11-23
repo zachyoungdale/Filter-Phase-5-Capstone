@@ -10,6 +10,16 @@ class UsersController < ApplicationController
         end
     end
 
+    def user_reviewed_shops
+        user = User.find(session[:user_id])
+        if user
+            user_reviewed_shops = user.reviewed_shops
+            render json: user_reviewed_shops, status: :ok
+        else
+            render json: { error: "Not authorized"}, status: :unauthorized
+        end
+    end
+
     def create
         user = User.create(user_params)
         if user.valid? 

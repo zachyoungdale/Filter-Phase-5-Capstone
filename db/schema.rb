@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_214337) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_162224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_shop_id"], name: "index_bookmarks_on_coffee_shop_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -30,6 +39,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_214337) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_shop_id", null: false
+    t.integer "rating"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_shop_id"], name: "index_reviews_on_coffee_shop_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,4 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_214337) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookmarks", "coffee_shops"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "reviews", "coffee_shops"
+  add_foreign_key "reviews", "users"
 end
