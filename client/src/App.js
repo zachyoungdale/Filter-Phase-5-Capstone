@@ -37,7 +37,13 @@ function App() {
     <div>
       <NavBar user={user} setUser={setUser} />
       <Routes>
-        <Route exact path="/" element={<CoffeeShopsList cities={cities} />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <CoffeeShopsList cities={cities} coffeeShops={coffeeShops} />
+          }
+        />
 
         <Route path="/login" element={<Login setUser={setUser} />} />
 
