@@ -1,9 +1,12 @@
 import { useState } from "react";
 import CoffeeShopPreviewCard from "./CoffeeShopPreviewCard";
 
-function CoffeeShopsList({ cities, coffeeShops }) {
-  const [selectedCity, setSelectedCity] = useState("");
-
+function CoffeeShopsList({
+  cities,
+  coffeeShops,
+  selectedCity,
+  setSelectedCity,
+}) {
   let cityOption = cities.map((city) => {
     return (
       <option key={city.name} value={city.id}>
@@ -11,8 +14,6 @@ function CoffeeShopsList({ cities, coffeeShops }) {
       </option>
     );
   });
-
-  console.log(selectedCity);
 
   const filteredCoffeeShopArray = coffeeShops.filter((shop) => {
     if (shop.city.id === selectedCity) {

@@ -4,10 +4,12 @@ import Login from "./Login";
 import Register from "./Register";
 import NavBar from "./NavBar";
 import CoffeeShopsList from "./CoffeeShopsList";
+import CoffeeShopCard from "./CoffeeShopCard";
 function App() {
   const [user, setUser] = useState(null);
   const [coffeeShops, setCoffeeShops] = useState([]);
   const [cities, setCities] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("");
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -29,10 +31,6 @@ function App() {
     });
   }, []);
 
-  console.log(coffeeShops);
-
-  console.log(user);
-
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
@@ -41,13 +39,19 @@ function App() {
           exact
           path="/"
           element={
-            <CoffeeShopsList cities={cities} coffeeShops={coffeeShops} />
+            <CoffeeShopsList
+              cities={cities}
+              coffeeShops={coffeeShops}
+              selectedCity={selectedCity}
+              setSelectedCity={setSelectedCity}
+            />
           }
         />
 
         <Route path="/login" element={<Login setUser={setUser} />} />
 
         <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/shop/:id" element={<CoffeeShopCard />} />
       </Routes>
     </div>
   );
