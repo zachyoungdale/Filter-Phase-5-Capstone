@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   function handleLogin(event) {
     event.preventDefault();
     const user = {
@@ -24,6 +26,7 @@ function Login({ setUser }) {
     });
     setUsername("");
     setPassword("");
+    navigate("/profile");
   }
   return (
     <form onSubmit={handleLogin}>

@@ -9,6 +9,7 @@ function NavBar({ user, setUser }) {
       headers: { "Content-Type": "application/json" },
     });
     setUser(null);
+    navigate("/");
   }
   return (
     <div className="bg-black font-sans text-white">
@@ -19,19 +20,27 @@ function NavBar({ user, setUser }) {
         >
           Filter.
         </button>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
-        {user ? (
-          <button
-            onClick={handleLogout}
-            className="hover:bg-white hover:text-black p-2 rounded-xl"
-          >
-            Logout
-          </button>
-        ) : null}
+        <div className="flex justify-between items-center">
+          {user ? (
+            <NavLink to="/profile" className="m-6">
+              Profile
+            </NavLink>
+          ) : null}
+          <NavLink to="/login" className="m-6">
+            Login
+          </NavLink>
+          <NavLink to="/register" className="m-6">
+            Register
+          </NavLink>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="hover:bg-white hover:text-black rounded-xl m-6"
+            >
+              Logout
+            </button>
+          ) : null}
+        </div>
       </nav>
     </div>
   );

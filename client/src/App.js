@@ -5,6 +5,8 @@ import Register from "./Register";
 import NavBar from "./NavBar";
 import CoffeeShopsList from "./CoffeeShopsList";
 import CoffeeShopCard from "./CoffeeShopCard";
+import Profile from "./Profile";
+
 function App() {
   const [user, setUser] = useState(null);
   const [coffeeShops, setCoffeeShops] = useState([]);
@@ -52,6 +54,7 @@ function App() {
 
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/shop/:id" element={<CoffeeShopCard />} />
+        <Route path="/profile" element={<Profile user={user} />} />
       </Routes>
     </div>
   );
