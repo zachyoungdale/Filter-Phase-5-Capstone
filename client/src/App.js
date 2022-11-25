@@ -12,6 +12,7 @@ function App() {
   const [coffeeShops, setCoffeeShops] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -33,6 +34,10 @@ function App() {
     });
   }, []);
 
+  function addBookmark(obj) {
+    setBookmarks([...bookmarks, obj]);
+  }
+
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
@@ -53,7 +58,10 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
 
         <Route path="/register" element={<Register setUser={setUser} />} />
-        <Route path="/shop/:id" element={<CoffeeShopCard />} />
+        <Route
+          path="/shop/:id"
+          element={<CoffeeShopCard user={user} addBookmark={addBookmark} />}
+        />
         <Route path="/profile" element={<Profile user={user} />} />
       </Routes>
     </div>

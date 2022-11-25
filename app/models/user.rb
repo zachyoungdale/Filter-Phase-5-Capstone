@@ -10,4 +10,8 @@ class User < ApplicationRecord
     def reviewed_shops
         self.reviews.map { |review| review.coffee_shop } 
     end
+
+    def bookmarked_shops
+        self.bookmarks.map { |bookmark| bookmark.coffee_shop} 
+    end
 end
