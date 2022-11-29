@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "/auth", to: "users#show"
   get "/users/:id/reviewed_shops", to: "users#user_reviewed_shops"
+  get "/users/:id/bookmarks", to: "users#user_bookmarks"
+  get "/users/:id/bookmarked_shops", to: "users#user_bookmarked_shops"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 

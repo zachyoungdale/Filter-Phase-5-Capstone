@@ -20,6 +20,26 @@ class UsersController < ApplicationController
         end
     end
 
+    def user_bookmarks
+        user = User.find(session[:user_id])
+        if user
+            user_bookmarks = user.bookmarks
+            render json: user_bookmarks, status: :ok
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
+    end
+
+    def user_bookmarked_shops
+        user = User.find(session[:user_id])
+        if user
+            user_bookmarked_shops = user.bookmarked_shops
+            render json: user_bookmarked_shops, status: :ok
+        else
+            render json: { error: "Not authorized"}, status: :unauthorized
+        end
+    end
+
     def create
         user = User.create(user_params)
         if user.valid? 
