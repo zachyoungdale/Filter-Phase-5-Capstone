@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BookmarkedShopCard from "./BookmarkedShopCard";
 import ReviewedShopCard from "./ReviewedShopCard";
 
-function Profile({ user, deleteBookmark }) {
+function Profile({ user }) {
   const [reviewedShops, setReviewedShops] = useState([]);
   const [userBookmarks, setUserBookmarks] = useState([]);
 
@@ -20,11 +20,12 @@ function Profile({ user, deleteBookmark }) {
     });
   }, []);
 
-  function deleteUserBookmark(obj) {
-    const filteredBookmarks = userBookmarks.filter(
-      (bookmark) => bookmark.id !== obj.id
-    );
+  function deleteUserBookmark(id) {
+    const filteredBookmarks = userBookmarks.filter((bookmark) => {
+      return bookmark.id !== id;
+    });
     setUserBookmarks(filteredBookmarks);
+    console.log(filteredBookmarks);
   }
 
   const reviewedShopCard = reviewedShops.map((shop) => {
