@@ -5,6 +5,7 @@ import CoffeeShopReviews from "./CoffeeShopReviews";
 function CoffeeShopCard({ user, addBookmark }) {
   const { id } = useParams();
   const [shop, setShop] = useState({});
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     fetch(`/coffee_shops/${id}`).then((res) => {
@@ -28,9 +29,14 @@ function CoffeeShopCard({ user, addBookmark }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBookmark),
-    })
-      .then((res) => res.json())
-      .then((bookmark) => addBookmark(bookmark));
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((bookmark) => addBookmark(bookmark));
+        setIsBookmarked(true);
+      } else {
+        res.json().then((event) => alert(event.error));
+      }
+    });
   }
 
   return (
@@ -57,7 +63,7 @@ function CoffeeShopCard({ user, addBookmark }) {
           className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold mb-3"
           onClick={handleBookmark}
         >
-          Bookmark
+          {isBookmarked ? "Bookmarked" : "Bookmark"}
         </button>
       </div>
       <div className="bg-black text-white flex flex-col p-6">

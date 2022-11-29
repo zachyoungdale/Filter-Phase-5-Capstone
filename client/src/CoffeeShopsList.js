@@ -1,11 +1,13 @@
 import { useState } from "react";
 import CoffeeShopPreviewCard from "./CoffeeShopPreviewCard";
+import NewCoffeeShopForm from "./NewCoffeeShopForm";
 
 function CoffeeShopsList({
   cities,
   coffeeShops,
   selectedCity,
   setSelectedCity,
+  addNewCoffeeShop,
 }) {
   let cityOption = cities.map((city) => {
     return (
@@ -39,6 +41,12 @@ function CoffeeShopsList({
         </select>
       </div>
       <div className="grid grid-cols-2">{coffeeShopPreviewCard}</div>
+      <NewCoffeeShopForm
+        selectedCity={selectedCity}
+        setSelectedCity={setSelectedCity}
+        cityOption={cityOption}
+        addNewCoffeeShop={addNewCoffeeShop}
+      />
     </div>
   );
 }

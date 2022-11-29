@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
         if bookmark.valid?
             render json: bookmark, status: :created
         else
-            render json: {error: "Bookmark invalid"}, status: :unprocessable_entity
+            render json: {error: "Coffee shop has already been bookmarked!"}, status: :unprocessable_entity
         end
     end
 
