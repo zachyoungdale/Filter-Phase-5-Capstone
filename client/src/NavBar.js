@@ -15,12 +15,12 @@ function NavBar({ user, setUser }) {
     <div className="bg-black font-sans text-white">
       <nav className="flex justify-between items-center p-6">
         <button
-          className="font-extrabold text-3xl"
+          className="font-extrabold text-5xl"
           onClick={() => navigate("/")}
         >
           Filter.
         </button>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center font-sans font-bold text-xl">
           {user ? (
             <NavLink to="/profile" className="m-6">
               Profile
