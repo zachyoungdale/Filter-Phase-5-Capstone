@@ -1,19 +1,15 @@
 import { useState } from "react";
 
-function NewCoffeeShopForm({
-  selectedCity,
-  setSelectedCity,
-  cityOption,
-  addNewCoffeeShop,
-}) {
+function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
   const [shopName, setShopName] = useState("");
   const [shopAddress, setShopAddress] = useState("");
   const [shopCity, setShopCity] = useState(null);
   const [shopWebsite, setShopWebsite] = useState("");
   const [shopSocials, setShopSocials] = useState("");
-  const [errors, setErrors] = useState([]);
 
-  function handleSubmit(e) {
+  const [shopErrors, setShopErrors] = useState([]);
+
+  function handleShopSubmit(e) {
     e.preventDefault();
     const newShop = {
       name: shopName,
@@ -38,19 +34,20 @@ function NewCoffeeShopForm({
         setShopWebsite("");
         setShopSocials("");
       } else {
-        res.json().then((data) => setErrors(data.errors));
+        res.json().then((data) => setShopErrors(data.errors));
       }
     });
   }
+
   return (
-    <div className="flex flex-col bg-black justify-center items-center text-white mt-6 font-sans">
+    <div className="flex flex-col bg-black justify-center items-center text-white mt-20 font-sans">
       <h1 className="font-black text-4xl p-6">
         Don't see a coffee shop? Add it here!
       </h1>
-      {errors.length > 0 && (
+      {shopErrors.length > 0 && (
         <ul>
           <li className="font-sans text-red-500 font-bold text-2xl">Errors:</li>
-          {errors.map((error) => (
+          {shopErrors.map((error) => (
             <li
               key={error}
               className="text-red-500 font-sans font-bold text-xl"
@@ -62,7 +59,7 @@ function NewCoffeeShopForm({
       )}
       <form
         className="flex flex-col justify-center items-center"
-        onSubmit={handleSubmit}
+        onSubmit={handleShopSubmit}
       >
         <label>Name:</label>
         <input
@@ -98,7 +95,7 @@ function NewCoffeeShopForm({
         ></input>
         <input
           type="submit"
-          className="bg-white rounded-lg text-black p-1 m-3"
+          className="transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-110 duration-300 text-black font-sans font-bold p-1 mt-4 rounded-md cursor-pointer"
         ></input>
       </form>
     </div>
