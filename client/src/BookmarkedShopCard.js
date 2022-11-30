@@ -11,7 +11,7 @@ function BookmarkedShopCard({ name, address, id, shopId, deleteUserBookmark }) {
   }
 
   return (
-    <div className="bg-black text-white font-sans p-6 mt-4 mb-4 max-w-md rounded-xl">
+    <div className="bg-black text-white font-sans p-6 mt-4 mb-4 max-w-lg rounded-xl">
       <h1 className="font-extrabold text-3xl">{name}</h1>
       <h2 className="font-semibold">{address}</h2>
       <button

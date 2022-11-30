@@ -93,10 +93,16 @@ function Profile({ user, setUser }) {
           Delete Profile
         </button>
       </div>
-      <h2 className="font-sans font-extrabold text-3xl">Reviewed Shops</h2>
-      {reviewedShopCard}
-      <h2 className="font-sans font-extrabold text-3xl">Bookmarks</h2>
-      {bookmarkedShopCard}
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-6 sm:grid-cols-1 xs:grid-cols-1">
+        <div>
+          <h2 className="font-sans font-extrabold text-3xl">Reviewed Shops</h2>
+          {reviewedShopCard}
+        </div>
+        <div>
+          <h2 className="font-sans font-extrabold text-3xl">Bookmarks</h2>
+          {bookmarkedShopCard}
+        </div>
+      </div>
     </div>
   ) : (
     <h1 className="font sans font-black text-6xl m-20">Loading Profile...</h1>
