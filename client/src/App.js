@@ -38,6 +38,14 @@ function App() {
     setBookmarks([...bookmarks, obj]);
   }
 
+  function addNewCoffeeShop(obj) {
+    setCoffeeShops([...coffeeShops, obj]);
+  }
+
+  function addNewCity(obj) {
+    setCities([...cities, obj]);
+  }
+
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
@@ -51,6 +59,8 @@ function App() {
               coffeeShops={coffeeShops}
               selectedCity={selectedCity}
               setSelectedCity={setSelectedCity}
+              addNewCoffeeShop={addNewCoffeeShop}
+              addNewCity={addNewCity}
             />
           }
         />

@@ -10,21 +10,13 @@ class CoffeeShopsController < ApplicationController
     end
 
     def create
-        coffee_shop = CoffeeShop.create(coffee_params)
-        if coffee_shop.valid?
-            render json: coffee_shop, status: :created
-        else
-            render json: {error: "Coffee Shop invalid"}, status: :unprocessable_entity
-        end
+        coffee_shop = CoffeeShop.create!(coffee_params)
+        render json: coffee_shop, status: :created
     end
 
     def update
         coffee_shop = CoffeeShop.find(params[:id])
-        if coffee_shop
-            coffee_shop.update(coffee_params)
-        else
-            render json: {error: "Coffee Shop invalid"}, status: :unprocessable_entity
-        end
+        coffee_shop.update!(coffee_params)
     end
 
     def destroy

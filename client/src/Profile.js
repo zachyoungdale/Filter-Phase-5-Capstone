@@ -18,7 +18,7 @@ function Profile({ user }) {
         res.json().then((bookmarks) => setUserBookmarks(bookmarks));
       }
     });
-  }, []);
+  }, [user]);
 
   function deleteUserBookmark(id) {
     const filteredBookmarks = userBookmarks.filter((bookmark) => {

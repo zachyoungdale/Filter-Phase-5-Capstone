@@ -28,9 +28,13 @@ function CoffeeShopCard({ user, addBookmark }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBookmark),
-    })
-      .then((res) => res.json())
-      .then((bookmark) => addBookmark(bookmark));
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((bookmark) => addBookmark(bookmark));
+      } else {
+        res.json().then((event) => alert(event.error));
+      }
+    });
   }
 
   return (

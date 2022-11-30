@@ -10,12 +10,8 @@ class CitiesController < ApplicationController
     end
 
     def create
-        city = City.create(city_params)
-        if city.valid?
-            render json: city, status: :created
-        else
-            render json: {error: "Invalid city"}, status: :unprocessable_entity
-        end
+        city = City.create!(city_params)
+        render json: city, status: :created
     end
 
     private
