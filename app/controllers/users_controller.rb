@@ -41,12 +41,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
-        if user.valid? 
-          render json: user, status: :created
-        else
-          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-        end
+        user = User.create!(user_params)
+        render json: user, status: :created
     end
 
     def index 
@@ -54,12 +50,10 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find(username: params[:username])
+        user = User.find(session[:user_id])
         if user 
-            user.update(user_update_params)
+            user.update!(user_update_params)
             render json: user, status: :accepted
-        else
-            render json: {error: "User not found"}, status: :not_found
         end
     end
 
@@ -70,6 +64,6 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-        params.permit(:username, :name, :image)
+        params.permit(:username, :name, :image, :password, :password_confirmation)
     end
 end
