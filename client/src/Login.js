@@ -20,13 +20,13 @@ function Login({ setUser }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => setUser(user));
+        setUsername("");
+        setPassword("");
+        navigate("/profile");
       } else {
         res.json().then((event) => alert(event.error));
       }
     });
-    setUsername("");
-    setPassword("");
-    navigate("/profile");
   }
   return (
     <form onSubmit={handleLogin}>

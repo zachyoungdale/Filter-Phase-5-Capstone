@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :reviews, except: :update
   resources :coffee_shops
   resources :cities, only: [:index, :show, :create]
-  resources :users, only: [:show, :create, :update]
+  resources :users, only: [:show, :create, :update, :destroy]
   resources :sessions
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

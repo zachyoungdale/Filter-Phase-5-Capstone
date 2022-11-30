@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Register({ setUser }) {
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -15,7 +14,6 @@ function Register({ setUser }) {
       username,
       password,
       name,
-      image,
     };
     fetch(`/users`, {
       method: "POST",
@@ -28,7 +26,7 @@ function Register({ setUser }) {
         res.json().then((user) => console.log(user));
         navigate("/login");
       } else {
-        res.json().then((event) => alert(`Sign Up: ${event.error}`));
+        res.json().then((event) => alert(`Sign Up: ${event.errors}`));
       }
     });
   }
@@ -41,12 +39,6 @@ function Register({ setUser }) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
-        <label>Profile Picture:</label>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
         />
         <label>Username:</label>
         <input

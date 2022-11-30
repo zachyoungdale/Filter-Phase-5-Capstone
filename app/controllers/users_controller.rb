@@ -52,8 +52,17 @@ class UsersController < ApplicationController
     def update
         user = User.find(session[:user_id])
         if user 
-            user.update!(user_update_params)
+            user.update!(name: params[:name], username: params[:username])
             render json: user, status: :accepted
+        end
+    end
+
+    def destroy
+        user = User.find(session[:user_id])
+        if user
+            user.destroy
+            session.delete :user_id
+            head :no_content
         end
     end
 
@@ -64,6 +73,6 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-        params.permit(:username, :name, :image, :password, :password_confirmation)
+        params.permit(:username, :name, :password, :password_confirmation)
     end
 end

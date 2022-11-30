@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import CoffeeShopsList from "./CoffeeShopsList";
 import CoffeeShopCard from "./CoffeeShopCard";
 import Profile from "./Profile";
+import UpdateProfile from "./UpdateProfile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -72,7 +73,14 @@ function App() {
           path="/shop/:id"
           element={<CoffeeShopCard user={user} addBookmark={addBookmark} />}
         />
-        <Route path="/profile" element={<Profile user={user} />} />
+        <Route
+          path="/profile"
+          element={<Profile user={user} setUser={setUser} />}
+        />
+        <Route
+          path="/updateprofile"
+          element={<UpdateProfile user={user} setUser={setUser} />}
+        />
       </Routes>
     </div>
   );
