@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CoffeeShopReviews from "./CoffeeShopReviews";
+import NewCoffeeShopReview from "./NewCoffeeShopReview";
 
 function CoffeeShopCard({ user, addBookmark }) {
   const { id } = useParams();
@@ -47,27 +48,30 @@ function CoffeeShopCard({ user, addBookmark }) {
         <h2 className="font-sans font-extrabold text-3xl mb-3">
           {shop.address}
         </h2>
-        <a href={shop.website}>
-          <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold mb-3">
-            Website
+        <div className="flex flex-row">
+          <a href={shop.website}>
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3">
+              Website
+            </button>
+          </a>
+          <a href={shop.socials}>
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3">
+              Socials
+            </button>
+          </a>
+          <button
+            className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3"
+            onClick={handleBookmark}
+          >
+            Bookmark
           </button>
-        </a>
-        <a href={shop.socials}>
-          <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold mb-3">
-            Socials
-          </button>
-        </a>
-        <button
-          className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold mb-3"
-          onClick={handleBookmark}
-        >
-          Bookmark
-        </button>
+        </div>
       </div>
       <div className="bg-black text-white flex flex-col p-6">
         <h1 className="font-sans font-black text-4xl">Reviews</h1>
         {shopReview}
       </div>
+      <NewCoffeeShopReview />
     </div>
   );
 }
