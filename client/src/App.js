@@ -36,7 +36,7 @@ function App() {
   }, []);
 
   function addBookmark(obj) {
-    setUserBookmarks([...bookmarks, obj]);
+    setUserBookmarks([...userBookmarks, obj]);
   }
 
   function addNewCoffeeShop(obj) {
@@ -75,8 +75,6 @@ function App() {
             <CoffeeShopCard
               user={user}
               addBookmark={addBookmark}
-              setUser={setUser}
-              bookmarks={bookmarks}
               userBookmarks={userBookmarks}
               setUserBookmarks={setUserBookmarks}
             />
