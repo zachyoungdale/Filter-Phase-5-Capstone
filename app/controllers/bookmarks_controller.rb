@@ -12,9 +12,9 @@ class BookmarksController < ApplicationController
     def create
         bookmark = Bookmark.create(bookmark_params)
         if bookmark.valid?
-            render json: bookmark, status: :created
+        render json: bookmark, status: :created
         else
-            render json: {error: "Coffee shop has already been bookmarked!"}, status: :unprocessable_entity
+            render json: {Error: "You have already bookmarked this shop!"}, status: :unprocessable_entity
         end
     end
 
