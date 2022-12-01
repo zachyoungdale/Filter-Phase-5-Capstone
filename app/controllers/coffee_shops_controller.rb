@@ -4,6 +4,11 @@ class CoffeeShopsController < ApplicationController
         render json: CoffeeShop.all, status: :ok
     end
 
+    def shop_reviews
+        coffee_shop = CoffeeShop.find(params[:id])
+        render json: coffee_shop.reviews, status: :ok
+    end
+
     def show
         coffee_shop = CoffeeShop.find(params[:id])
         render json: coffee_shop, status: :ok

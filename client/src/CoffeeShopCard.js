@@ -11,11 +11,18 @@ function CoffeeShopCard({
 }) {
   const { id } = useParams();
   const [shop, setShop] = useState({});
+  const [shopReviews, setShopReviews] = useState([]);
 
   useEffect(() => {
     fetch(`/coffee_shops/${id}`).then((res) => {
       if (res.ok) {
         res.json().then((obj) => setShop(obj));
+      }
+    });
+
+    fetch(`/coffee_shops/${id}/reviews`).then((res) => {
+      if (res.ok) {
+        res.json().then((reviews) => setShopReviews(reviews));
       }
     });
 
@@ -34,10 +41,14 @@ function CoffeeShopCard({
     }
   });
 
-  console.log(bookmarkToggle);
-
-  const shopReview = shop?.reviews?.map((review) => {
-    return <CoffeeShopReviews {...review} key={review.id} />;
+  const shopReview = shopReviews?.map((review) => {
+    return (
+      <CoffeeShopReviews
+        {...review}
+        key={review.id}
+        userName={review.user.name}
+      />
+    );
   });
 
   function handleBookmark() {
@@ -91,8 +102,8 @@ function CoffeeShopCard({
         </div>
       </div>
       <div className="bg-black text-white flex flex-col p-6">
-        {shop?.reviews ? (
-          <h1 className="font-sans font-black text-4xl"></h1>
+        {shopReviews ? (
+          <h1 className="font-sans font-black text-4xl">Reviews</h1>
         ) : null}
         {shopReview}
       </div>

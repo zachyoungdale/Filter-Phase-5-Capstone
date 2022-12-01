@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function NewCityForm({ addNewCity }) {
   const [newCity, setNewCity] = useState("");
-  const [cityErrors, setCityErrors] = useState([]);
   function handleCitySubmit(e) {
     e.preventDefault();
     const newCityObj = {
@@ -18,7 +17,7 @@ function NewCityForm({ addNewCity }) {
         res.json().then((city) => addNewCity(city));
         alert("City added successfully!");
       } else {
-        res.json().then((data) => setCityErrors(data.errors));
+        res.json().then((data) => alert(data.errors));
       }
       setNewCity("");
     });
@@ -33,26 +32,13 @@ function NewCityForm({ addNewCity }) {
         onSubmit={handleCitySubmit}
         className="flex flex-row justify-center items-center"
       >
-        {cityErrors.length > 0 && (
-          <ul>
-            <li className="font-sans text-red-500 font-bold text-2xl">
-              Errors:
-            </li>
-            {cityErrors.map((error) => (
-              <li
-                key={error}
-                className="text-red-500 font-sans font-bold text-xl"
-              >
-                {error}
-              </li>
-            ))}
-          </ul>
-        )}
-        <label className="font sans font-bold mr-2">Name and State:</label>
+        <label className="font sans font-bold text-lg mr-2">
+          Name and State:
+        </label>
         <input
           type="text"
           onChange={(e) => setNewCity(e.target.value)}
-          className="font-sans text-black p-1"
+          className="font-sans font-bold text-black p-1 rounded-md"
         ></input>
         <input
           type="submit"

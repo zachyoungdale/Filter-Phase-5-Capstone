@@ -8,7 +8,7 @@ function CoffeeShopPreviewCard({ name, address, id }) {
       <h4>{address}</h4>
       <button
         onClick={() => navigate(`/shop/${id}`)}
-        className="bg-white text-black font-sans font-bold text-xl p-2 rounded-xl mt-3"
+        className="bg-white text-black font-sans font-bold text-xl p-2 rounded-xl mt-3 hover:bg-slate-300"
       >
         See More
       </button>

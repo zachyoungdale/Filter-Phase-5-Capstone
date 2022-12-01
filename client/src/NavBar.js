@@ -22,20 +22,33 @@ function NavBar({ user, setUser }) {
         </button>
         <div className="flex justify-between items-center font-sans font-bold text-xl">
           {user ? (
-            <NavLink to="/profile" className="m-6">
+            <NavLink
+              to="/profile"
+              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
+            >
               Profile
             </NavLink>
           ) : null}
-          <NavLink to="/login" className="m-6">
-            Login
-          </NavLink>
-          <NavLink to="/register" className="m-6">
-            Register
-          </NavLink>
+          {user ? null : (
+            <NavLink
+              to="/login"
+              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
+            >
+              Login
+            </NavLink>
+          )}
+          {user ? null : (
+            <NavLink
+              to="/register"
+              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
+            >
+              Register
+            </NavLink>
+          )}
           {user ? (
             <button
               onClick={handleLogout}
-              className="hover:bg-white hover:text-black rounded-xl m-6"
+              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
             >
               Logout
             </button>

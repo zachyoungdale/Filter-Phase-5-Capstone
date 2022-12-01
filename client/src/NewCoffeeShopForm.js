@@ -7,8 +7,6 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
   const [shopWebsite, setShopWebsite] = useState("");
   const [shopSocials, setShopSocials] = useState("");
 
-  const [shopErrors, setShopErrors] = useState([]);
-
   function handleShopSubmit(e) {
     e.preventDefault();
     const newShop = {
@@ -34,7 +32,7 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
         setShopWebsite("");
         setShopSocials("");
       } else {
-        res.json().then((data) => setShopErrors(data.errors));
+        res.json().then((data) => alert(data.errors));
       }
     });
   }
@@ -44,58 +42,48 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
       <h1 className="font-black text-4xl p-6">
         Don't see a coffee shop? Add it here!
       </h1>
-      {shopErrors.length > 0 && (
-        <ul>
-          <li className="font-sans text-red-500 font-bold text-2xl">Errors:</li>
-          {shopErrors.map((error) => (
-            <li
-              key={error}
-              className="text-red-500 font-sans font-bold text-xl"
-            >
-              {error}
-            </li>
-          ))}
-        </ul>
-      )}
+
       <form
-        className="flex flex-col justify-center items-center"
+        className="flex flex-col justify-center items-center "
         onSubmit={handleShopSubmit}
       >
-        <label>Name:</label>
-        <input
-          type="text"
-          className="text-black"
-          onChange={(e) => setShopName(e.target.value)}
-        ></input>
-        <label>Address:</label>
-        <input
-          type="text"
-          className="text-black"
-          onChange={(e) => setShopAddress(e.target.value)}
-        ></input>
-        <label>City:</label>
-        <select
-          onChange={(e) => setShopCity(parseInt(e.target.value))}
-          className=" text-black"
-        >
-          <option>...</option>
-          {cityOption}
-        </select>
-        <label>Website:</label>
-        <input
-          type="text"
-          className="text-black"
-          onChange={(e) => setShopWebsite(e.target.value)}
-        ></input>
-        <label>Socials:</label>
-        <input
-          type="text"
-          className="text-black"
-          onChange={(e) => setShopSocials(e.target.value)}
-        ></input>
+        <div className=" flex flex-col justify-center items-center space-y-2">
+          <label className="font-bold text-lg">Name:</label>
+          <input
+            type="text"
+            className="text-black font-sans font-bold p-1 w-60 rounded-md"
+            onChange={(e) => setShopName(e.target.value)}
+          ></input>
+          <label className="font-bold text-lg">Address:</label>
+          <input
+            type="text"
+            className="text-black font-sans font-bold p-1 w-60 rounded-md"
+            onChange={(e) => setShopAddress(e.target.value)}
+          ></input>
+          <label className="font-bold text-lg">City:</label>
+          <select
+            onChange={(e) => setShopCity(parseInt(e.target.value))}
+            className="text-black font-sans font-bold p-1 w-60 rounded-md"
+          >
+            <option>...</option>
+            {cityOption}
+          </select>
+          <label className="font-bold text-lg">Website:</label>
+          <input
+            type="text"
+            className="text-black font-sans font-bold p-1 w-60 rounded-md"
+            onChange={(e) => setShopWebsite(e.target.value)}
+          ></input>
+          <label className="font-bold text-lg">Socials:</label>
+          <input
+            type="text"
+            className="text-black font-sans font-bold p-1 w-60 rounded-md"
+            onChange={(e) => setShopSocials(e.target.value)}
+          ></input>
+        </div>
         <input
           type="submit"
-          className="transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-110 duration-300 text-black font-sans font-bold p-1 mt-4 rounded-md cursor-pointer"
+          className="transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-110 duration-300 text-black font-sans font-bold p-1 mt-5 w-40 rounded-md cursor-pointer"
         ></input>
       </form>
     </div>
