@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import CoffeeShopReviews from "./CoffeeShopReviews";
 import NewCoffeeShopReview from "./NewCoffeeShopReview";
 
-function CoffeeShopCard({ user, addBookmark }) {
+function CoffeeShopCard({
+  user,
+  addBookmark,
+  userBookmarks,
+  setUserBookmarks,
+}) {
   const { id } = useParams();
   const [shop, setShop] = useState({});
 
@@ -13,7 +18,23 @@ function CoffeeShopCard({ user, addBookmark }) {
         res.json().then((obj) => setShop(obj));
       }
     });
+
+    fetch(`/users/${user?.id}/bookmarks`).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => setUserBookmarks(data));
+      } else {
+        res.json().then((data) => alert(data.errors));
+      }
+    });
   }, []);
+
+  const bookmarkToggle = userBookmarks.filter((bookmark) => {
+    if (bookmark.coffee_shop.id === shop.id) {
+      return true;
+    }
+  });
+
+  console.log(bookmarkToggle);
 
   const shopReview = shop?.reviews?.map((review) => {
     return <CoffeeShopReviews {...review} key={review.id} />;
@@ -31,9 +52,11 @@ function CoffeeShopCard({ user, addBookmark }) {
       body: JSON.stringify(newBookmark),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((bookmark) => addBookmark(bookmark));
+        res.json().then((bookmark) => {
+          addBookmark(bookmark);
+        });
       } else {
-        res.json().then((event) => alert(event.error));
+        res.json().then((event) => alert(event.errors));
       }
     });
   }
@@ -63,7 +86,7 @@ function CoffeeShopCard({ user, addBookmark }) {
             className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3"
             onClick={handleBookmark}
           >
-            Bookmark
+            {bookmarkToggle.length > 0 ? "Bookmarked!" : "Bookmark"}
           </button>
         </div>
       </div>
@@ -71,7 +94,7 @@ function CoffeeShopCard({ user, addBookmark }) {
         <h1 className="font-sans font-black text-4xl">Reviews</h1>
         {shopReview}
       </div>
-      <NewCoffeeShopReview />
+      <NewCoffeeShopReview user={user} shop={shop} />
     </div>
   );
 }

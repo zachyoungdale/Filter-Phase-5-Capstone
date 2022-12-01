@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function NewCoffeeShopReview() {
+function NewCoffeeShopReview({ shop, user }) {
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
 
@@ -9,11 +9,23 @@ function NewCoffeeShopReview() {
     const newReviewObj = {
       rating: rating,
       content: content,
+      user_id: user.id,
+      coffee_shop_id: shop.id,
     };
-    console.log(newReviewObj);
+    fetch(`/reviews`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReviewObj),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => console.log(data));
+        window.location.reload();
+      } else {
+        res.json().then((data) => alert(data.errors));
+      }
+    });
   }
 
-  console.log(rating);
   return (
     <div className="flex flex-col bg-black justify-center items-center text-white font-sans pt-60 pb-40">
       <h1 className="font-extrabold text-5xl flex justify-center">
@@ -32,6 +44,7 @@ function NewCoffeeShopReview() {
                 type="button"
                 key={index}
                 className={index <= rating ? "on" : "off"}
+                id="star-btn"
                 onClick={() => setRating(index)}
               >
                 <span className="star">&#9733;</span>

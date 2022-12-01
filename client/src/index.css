@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-button {
+#star-btn {
   background-color: transparent;
   border: none;
   outline: none;
@@ -18,6 +18,6 @@ button {
   color: rgb(255, 255, 255);
 }
 
-button:hover {
+#star-btn:hover {
   transform: translateY(-0.25rem);
 }

@@ -14,6 +14,7 @@ function App() {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [bookmarks, setBookmarks] = useState([]);
+  const [userBookmarks, setUserBookmarks] = useState([]);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -36,7 +37,7 @@ function App() {
   }, []);
 
   function addBookmark(obj) {
-    setBookmarks([...bookmarks, obj]);
+    setUserBookmarks([...bookmarks, obj]);
   }
 
   function addNewCoffeeShop(obj) {
@@ -71,7 +72,16 @@ function App() {
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route
           path="/shop/:id"
-          element={<CoffeeShopCard user={user} addBookmark={addBookmark} />}
+          element={
+            <CoffeeShopCard
+              user={user}
+              addBookmark={addBookmark}
+              setUser={setUser}
+              bookmarks={bookmarks}
+              userBookmarks={userBookmarks}
+              setUserBookmarks={setUserBookmarks}
+            />
+          }
         />
         <Route
           path="/profile"

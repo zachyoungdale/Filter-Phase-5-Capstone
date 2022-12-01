@@ -10,12 +10,8 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        review = Review.create(review_params)
-        if review.valid?
-            render json: review, status: :created
-        else
-            render json: {error: "Invalid review"}, status: :unprocessable_entity
-        end
+        review = Review.create!(review_params)
+        render json: review, status: :created
     end
 
     def destroy
