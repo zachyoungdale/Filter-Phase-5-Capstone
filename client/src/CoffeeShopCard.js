@@ -102,7 +102,7 @@ function CoffeeShopCard({
         </div>
       </div>
       <div className="bg-black text-white flex flex-col p-6">
-        {shopReviews ? (
+        {shopReviews.length > 0 ? (
           <h1 className="font-sans font-black text-4xl">Reviews</h1>
         ) : null}
         {shopReview}
