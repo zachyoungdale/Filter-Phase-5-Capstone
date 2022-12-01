@@ -91,7 +91,9 @@ function CoffeeShopCard({
         </div>
       </div>
       <div className="bg-black text-white flex flex-col p-6">
-        <h1 className="font-sans font-black text-4xl">Reviews</h1>
+        {shop?.reviews ? (
+          <h1 className="font-sans font-black text-4xl"></h1>
+        ) : null}
         {shopReview}
       </div>
       <NewCoffeeShopReview user={user} shop={shop} />

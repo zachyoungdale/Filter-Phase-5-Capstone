@@ -59,7 +59,10 @@ function NewCoffeeShopReview({ shop, user }) {
             className="font-sans text-black text-xl font-medium p-3 resize h-40 w-96"
           ></textarea>
         </div>
-        <input type="submit"></input>
+        <input
+          type="submit"
+          className="transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-110 duration-300 text-black font-sans font-bold p-1 ml-4 rounded-md cursor-pointer w-52 mt-6"
+        ></input>
       </form>
     </div>
   );
