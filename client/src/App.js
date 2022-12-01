@@ -13,7 +13,6 @@ function App() {
   const [coffeeShops, setCoffeeShops] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
-  const [bookmarks, setBookmarks] = useState([]);
   const [userBookmarks, setUserBookmarks] = useState([]);
 
   useEffect(() => {
