@@ -62,6 +62,7 @@ function App() {
               setSelectedCity={setSelectedCity}
               addNewCoffeeShop={addNewCoffeeShop}
               addNewCity={addNewCity}
+              user={user}
             />
           }
         />

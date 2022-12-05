@@ -39,9 +39,7 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
 
   return (
     <div className="flex flex-col bg-black justify-center items-center text-white mt-20 font-sans">
-      <h1 className="font-black text-4xl p-6">
-        Don't see a coffee shop? Add it here!
-      </h1>
+      <h1 className="font-black text-4xl p-6">Add Coffee Shop</h1>
 
       <form
         className="flex flex-col justify-center items-center "
