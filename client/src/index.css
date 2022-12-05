@@ -21,3 +21,8 @@
 #star-btn:hover {
   transform: translateY(-0.25rem);
 }
+
+.map-container {
+  width: 100%;
+  height: 50vh;
+}

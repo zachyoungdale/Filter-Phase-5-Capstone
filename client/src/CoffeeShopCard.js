@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CoffeeShopReviews from "./CoffeeShopReviews";
 import NewCoffeeShopReview from "./NewCoffeeShopReview";
+import Map from "./Map";
+import { useLoadScript } from "@react-google-maps/api";
+
+const places = ["places"];
 
 function CoffeeShopCard({
   user,
@@ -12,6 +16,11 @@ function CoffeeShopCard({
   const { id } = useParams();
   const [shop, setShop] = useState({});
   const [shopReviews, setShopReviews] = useState([]);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries: places,
+  });
 
   useEffect(() => {
     fetch(`/coffee_shops/${id}`).then((res) => {
@@ -29,8 +38,6 @@ function CoffeeShopCard({
     fetch(`/users/${user?.id}/bookmarks`).then((res) => {
       if (res.ok) {
         res.json().then((data) => setUserBookmarks(data));
-      } else {
-        res.json().then((data) => alert(data.errors));
       }
     });
   }, []);
@@ -72,6 +79,8 @@ function CoffeeShopCard({
     });
   }
 
+  if (!isLoaded) return <div>Loading...</div>;
+
   return (
     <div>
       <div className="flex flex-col justify-center items-center bg-black p-6 text-white">
@@ -101,6 +110,7 @@ function CoffeeShopCard({
           </button>
         </div>
       </div>
+      <Map latitude={shop?.latitude} longitude={shop.longitude} />
       <div className="bg-black text-white flex flex-col p-6">
         {shopReviews.length > 0 ? (
           <h1 className="font-sans font-black text-4xl">Reviews</h1>
