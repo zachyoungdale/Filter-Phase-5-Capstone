@@ -1,4 +1,5 @@
 class CoffeeShopsController < ApplicationController
+    skip_before_action :authorized, only: [:index, :shop_reviews, :show]
     
     def index
         render json: CoffeeShop.all, status: :ok

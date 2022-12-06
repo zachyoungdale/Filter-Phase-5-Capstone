@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
 
     def index
         render json: Bookmark.all, status: :ok

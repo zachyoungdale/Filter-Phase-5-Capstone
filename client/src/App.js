@@ -7,6 +7,7 @@ import CoffeeShopsList from "./CoffeeShopsList";
 import CoffeeShopCard from "./CoffeeShopCard";
 import Profile from "./Profile";
 import UpdateProfile from "./UpdateProfile";
+import Home from "./Home";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,9 +52,9 @@ function App() {
     <div>
       <NavBar user={user} setUser={setUser} />
       <Routes>
+        <Route exact path="/" element={<Home />} />
         <Route
-          exact
-          path="/"
+          path="/coffee-shops"
           element={
             <CoffeeShopsList
               cities={cities}

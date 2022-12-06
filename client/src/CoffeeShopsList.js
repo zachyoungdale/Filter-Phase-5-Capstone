@@ -52,7 +52,7 @@ function CoffeeShopsList({
       <div className="flex justify-center mb-20 font-sans text-xl">
         <select
           onChange={(e) => setSelectedCity(parseInt(e.target.value))}
-          className="p-3"
+          className="p-3 border-2 border-black rounded-md"
         >
           <option>...</option>
           {cityOption}

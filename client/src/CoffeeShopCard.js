@@ -93,17 +93,17 @@ function CoffeeShopCard({
         </h2>
         <div className="flex flex-row">
           <a href={shop.website}>
-            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3">
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3 hover:bg-gray-200">
               Website
             </button>
           </a>
           <a href={shop.socials}>
-            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3">
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3  hover:bg-gray-200">
               Socials
             </button>
           </a>
           <button
-            className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3"
+            className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3  hover:bg-gray-200"
             onClick={handleBookmark}
           >
             {bookmarkToggle.length > 0 ? "Bookmarked!" : "Bookmark"}

@@ -29,24 +29,35 @@ function Login({ setUser }) {
     });
   }
   return (
-    <form onSubmit={handleLogin}>
-      <h3>LOGIN</h3>
-      <label>Username:</label>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <label>Password:</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input type="submit" />
-      {/* <button type="button" onClick={registerClick} >Register</button> */}
-    </form>
+    <div className="flex flex-col justify-center items-center font-sans mt-52">
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col justify-center items-start m-6"
+      >
+        <h3 className="font-sans font-black text-6xl mb-10">LOGIN</h3>
+        <div className="flex flex-col space-y-6">
+          <label className="font-sans font-bold text-4xl mr-4">Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <label className="font-sans font-bold text-4xl mr-4">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <input
+            type="submit"
+            className="font-sans font-bold bg-black text-white text-2xl p-3 rounded-lg hover:animate-bounce"
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 export default Login;

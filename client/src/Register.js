@@ -31,35 +31,49 @@ function Register({ setUser }) {
     });
   }
   return (
-    <div>
-      <h1>Sign Up:</h1>
-      <form onSubmit={handleRegister}>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label>Confirm Password:</label>
-        <input
-          type="password"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-        <input type="submit" />
-        {/* <button type="button" onClick={cancelClick}>Cancel</button> */}
+    <div className="flex flex-col justify-center items-center font-sans mt-20">
+      <form
+        onSubmit={handleRegister}
+        className="flex flex-col justify-center items-start m-6"
+      >
+        <h3 className="font-sans font-black text-6xl mb-10">SIGN UP</h3>
+        <div className="flex flex-col space-y-6">
+          <label className="font-sans font-bold text-3xl mr-4">Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <label className="font-sans font-bold text-3xl mr-4">Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <label className="font-sans font-bold text-3xl mr-4">Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <label className="font-sans font-bold text-3xl mr-4">
+            Confirm Password:
+          </label>
+          <input
+            type="password"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            className="font-sans font-bold p-2 text-2xl border-4 border-black"
+          />
+          <input
+            type="submit"
+            className="font-sans font-bold bg-black text-white text-2xl p-3 rounded-lg hover:animate-bounce"
+          />
+          {/* <button type="button" onClick={cancelClick}>Cancel</button> */}
+        </div>
       </form>
     </div>
   );

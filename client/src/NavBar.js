@@ -13,10 +13,10 @@ function NavBar({ user, setUser }) {
   }
   return (
     <div className="bg-black font-sans text-white">
-      <nav className="flex justify-between items-center p-6">
+      <nav className="flex justify-between items-center p-10">
         <button
           className="font-extrabold text-5xl"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/coffee-shops")}
         >
           Filter.
         </button>
@@ -24,31 +24,16 @@ function NavBar({ user, setUser }) {
           {user ? (
             <NavLink
               to="/profile"
-              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
+              className="mr-8 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
             >
               Profile
             </NavLink>
           ) : null}
-          {user ? null : (
-            <NavLink
-              to="/login"
-              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
-            >
-              Login
-            </NavLink>
-          )}
-          {user ? null : (
-            <NavLink
-              to="/register"
-              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
-            >
-              Register
-            </NavLink>
-          )}
+
           {user ? (
             <button
               onClick={handleLogout}
-              className="m-6 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
+              className="mr-3 hover:font-extrabold hover:-translate-y-1 transition ease-in-out"
             >
               Logout
             </button>

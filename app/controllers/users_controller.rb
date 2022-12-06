@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: :create
+    skip_before_action :authorized, only: [:show, :create]
 
     def show 
         user = User.find(session[:user_id])
