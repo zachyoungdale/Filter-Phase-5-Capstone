@@ -79,6 +79,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+#
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: Filter_Phase_5_Capstone_production
+  username: Filter_Phase_5_Capstone
+  password: <%= ENV["FILTER_PHASE_5_CAPSTONE_DATABASE_PASSWORD"] %>
