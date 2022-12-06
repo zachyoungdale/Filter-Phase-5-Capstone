@@ -15,11 +15,11 @@ function NewCityForm({ addNewCity }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((city) => addNewCity(city));
+        setNewCity("");
         alert("City added successfully!");
       } else {
         res.json().then((data) => alert(data.errors));
       }
-      setNewCity("");
     });
   }
 
@@ -35,6 +35,7 @@ function NewCityForm({ addNewCity }) {
         </label>
         <input
           type="text"
+          value={newCity}
           onChange={(e) => setNewCity(e.target.value)}
           className="font-sans font-bold text-black p-1 rounded-md"
         ></input>

@@ -49,17 +49,20 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
           <label className="font-bold text-lg">Name:</label>
           <input
             type="text"
+            value={shopName}
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
             onChange={(e) => setShopName(e.target.value)}
           ></input>
           <label className="font-bold text-lg">Address:</label>
           <input
             type="text"
+            value={shopAddress}
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
             onChange={(e) => setShopAddress(e.target.value)}
           ></input>
           <label className="font-bold text-lg">City:</label>
           <select
+            value={shopCity}
             onChange={(e) => setShopCity(parseInt(e.target.value))}
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
           >
@@ -69,12 +72,14 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
           <label className="font-bold text-lg">Website:</label>
           <input
             type="text"
+            value={shopWebsite}
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
             onChange={(e) => setShopWebsite(e.target.value)}
           ></input>
           <label className="font-bold text-lg">Socials:</label>
           <input
             type="text"
+            value={shopSocials}
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
             onChange={(e) => setShopSocials(e.target.value)}
           ></input>
