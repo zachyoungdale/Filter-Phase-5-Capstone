@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  resources :bookmarks, except: :update
-  resources :reviews, except: :update
-  resources :coffee_shops
-  resources :cities, only: [:index, :show, :create]
-  resources :users, only: [:show, :create, :update, :destroy]
-  resources :sessions
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    resources :bookmarks, except: :update
+    resources :reviews, except: :update
+    resources :coffee_shops
+    resources :cities, only: [:index, :show, :create]
+    resources :users, only: [:show, :create, :update, :destroy]
+    resources :sessions
+    get "/auth", to: "users#show"
+    get "/users/:id/reviewed_shops", to: "users#user_reviewed_shops"
+    get "/users/:id/bookmarks", to: "users#user_bookmarks"
+    get "/coffee_shops/:id/reviews", to: "coffee_shops#shop_reviews"
+    get "/users/:id/bookmarked_shops", to: "users#user_bookmarked_shops"
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy"
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get "/auth", to: "users#show"
-  get "/users/:id/reviewed_shops", to: "users#user_reviewed_shops"
-  get "/users/:id/bookmarks", to: "users#user_bookmarks"
-  get "/coffee_shops/:id/reviews", to: "coffee_shops#shop_reviews"
-  get "/users/:id/bookmarked_shops", to: "users#user_bookmarked_shops"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end
