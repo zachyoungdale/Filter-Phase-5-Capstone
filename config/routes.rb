@@ -12,5 +12,4 @@ Rails.application.routes.draw do
     get "/users/:id/bookmarked_shops", to: "users#user_bookmarked_shops"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
-
 end
