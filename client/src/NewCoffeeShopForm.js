@@ -3,7 +3,7 @@ import { useState } from "react";
 function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
   const [shopName, setShopName] = useState("");
   const [shopAddress, setShopAddress] = useState("");
-  const [shopCity, setShopCity] = useState(null);
+  const [shopCity, setShopCity] = useState("");
   const [shopWebsite, setShopWebsite] = useState("");
   const [shopSocials, setShopSocials] = useState("");
 

@@ -1,6 +1,7 @@
 import CoffeeShopPreviewCard from "./CoffeeShopPreviewCard";
 import NewCoffeeShopForm from "./NewCoffeeShopForm";
 import NewCityForm from "./NewCityForm";
+import Select from "react-select";
 
 function CoffeeShopsList({
   cities,
@@ -11,16 +12,19 @@ function CoffeeShopsList({
   addNewCity,
   user,
 }) {
-  let cityOption = cities.map((city) => {
-    return (
-      <option key={city.id} value={city.id}>
-        {city.name}
-      </option>
-    );
+  const cityOption = cities.map((city) => {
+    return {
+      value: city.id,
+      label: city.name,
+    };
   });
 
+  function handleSelect(data) {
+    setSelectedCity(data);
+  }
+
   const filteredCoffeeShopArray = coffeeShops.filter((shop) => {
-    if (shop.city.id === selectedCity) {
+    if (shop.city.id === selectedCity.value) {
       return shop;
     }
   });
@@ -50,18 +54,18 @@ function CoffeeShopsList({
         Select Your City
       </h1>
       <div className="flex justify-center mb-20 font-sans text-xl">
-        <select
-          onChange={(e) => setSelectedCity(parseInt(e.target.value))}
-          className="p-3 border-2 border-black rounded-md"
-        >
-          <option>...</option>
-          {cityOption}
-        </select>
+        <Select
+          options={cityOption}
+          placeholder="Search your city"
+          value={selectedCity}
+          onChange={handleSelect}
+          isSearchable={true}
+        />
       </div>
       <div className="grid grid-cols-2">{coffeeShopPreviewCard}</div>
       {user?.admin === true ? (
         <NewCoffeeShopForm
-          cityOption={cityOption}
+          // cityOption={cityOption}
           addNewCoffeeShop={addNewCoffeeShop}
         />
       ) : (

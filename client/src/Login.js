@@ -53,7 +53,7 @@ function Login({ setUser }) {
           />
           <input
             type="submit"
-            className="font-sans font-bold bg-black text-white text-2xl p-3 rounded-lg hover:animate-bounce"
+            className="font-sans font-bold bg-black text-white text-2xl p-3 rounded-lg hover:-translate-y-1 hover:scale-110 duration-300"
           />
         </div>
       </form>
