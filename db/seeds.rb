@@ -9,10 +9,6 @@ User.destroy_all
 City.destroy_all
 CoffeeShop.destroy_all
 
-puts "seeding admin user"
-
-User.create(name: "Zachary Youngdale", username: "zachyoungdale", password: "doogie13", password_confirmation: "doogie13", admin: true)
-
 
 
 

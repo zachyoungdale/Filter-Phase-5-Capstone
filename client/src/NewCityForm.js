@@ -24,13 +24,13 @@ function NewCityForm({ addNewCity }) {
   }
 
   return (
-    <div className="flex flex-col bg-black justify-center items-center text-white pb-10 pt-10 font-sans">
+    <div className="flex flex-col bg-black justify-center items-center text-white p-10 font-sans">
       <h1 className="font-black text-4xl p-6">Add City</h1>
       <form
         onSubmit={handleCitySubmit}
         className="flex flex-row justify-center items-center"
       >
-        <label className="font sans font-bold text-lg mr-2">
+        <label className="font sans font-bold 2xl:text-lg sm:text-md mr-2">
           Name and State:
         </label>
         <input

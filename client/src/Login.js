@@ -29,7 +29,7 @@ function Login({ setUser }) {
     });
   }
   return (
-    <div className="flex flex-col justify-center items-center font-sans mt-52">
+    <div className="flex flex-col justify-center items-center font-sans mt-32">
       <form
         onSubmit={handleLogin}
         className="flex flex-col justify-center items-start m-6"

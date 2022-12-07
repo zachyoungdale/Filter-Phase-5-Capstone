@@ -62,7 +62,9 @@ function CoffeeShopsList({
           isSearchable={true}
         />
       </div>
-      <div className="grid grid-cols-2">{coffeeShopPreviewCard}</div>
+      <div className="grid 2xl:grid-cols-2 sm:grid-cols-1">
+        {coffeeShopPreviewCard}
+      </div>
       {user?.admin === true ? (
         <NewCoffeeShopForm
           cities={cities}
