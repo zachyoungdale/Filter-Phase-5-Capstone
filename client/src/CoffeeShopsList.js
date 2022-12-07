@@ -65,7 +65,7 @@ function CoffeeShopsList({
       <div className="grid grid-cols-2">{coffeeShopPreviewCard}</div>
       {user?.admin === true ? (
         <NewCoffeeShopForm
-          // cityOption={cityOption}
+          cities={cities}
           addNewCoffeeShop={addNewCoffeeShop}
         />
       ) : (

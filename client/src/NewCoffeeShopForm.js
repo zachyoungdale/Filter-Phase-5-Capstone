@@ -1,11 +1,19 @@
 import { useState } from "react";
 
-function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
+function NewCoffeeShopForm({ cities, addNewCoffeeShop }) {
   const [shopName, setShopName] = useState("");
   const [shopAddress, setShopAddress] = useState("");
   const [shopCity, setShopCity] = useState("");
   const [shopWebsite, setShopWebsite] = useState("");
   const [shopSocials, setShopSocials] = useState("");
+
+  const newCityOption = cities.map((city) => {
+    return (
+      <option key={city.id} value={city.id} label={city.name}>
+        {city.name}
+      </option>
+    );
+  });
 
   function handleShopSubmit(e) {
     e.preventDefault();
@@ -67,7 +75,7 @@ function NewCoffeeShopForm({ cityOption, addNewCoffeeShop }) {
             className="text-black font-sans font-bold p-1 w-60 rounded-md"
           >
             <option>...</option>
-            {cityOption}
+            {newCityOption}
           </select>
           <label className="font-bold text-lg">Website:</label>
           <input
