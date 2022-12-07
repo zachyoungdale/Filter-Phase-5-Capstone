@@ -85,3 +85,4 @@ production:
   database: Filter_Phase_5_Capstone_production
   username: Filter_Phase_5_Capstone
   password: <%= ENV["FILTER_PHASE_5_CAPSTONE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
