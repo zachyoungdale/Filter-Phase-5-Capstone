@@ -28,7 +28,7 @@ function NewCoffeeShopReview({ shop, user }) {
 
   return (
     <div className="flex flex-col bg-black justify-center items-center text-white font-sans pt-60 pb-40">
-      <h1 className="font-extrabold text-5xl flex justify-center">
+      <h1 className="font-extrabold text-4xl flex justify-center">
         Leave a Review?
       </h1>
       <form
@@ -36,7 +36,7 @@ function NewCoffeeShopReview({ shop, user }) {
         className="flex flex-col justify-center items-center"
       >
         <div className="flex flex-row m-5">
-          <label className="font-bold text-4xl mr-3">Rating</label>
+          <label className="font-bold text-3xl mr-3">Rating</label>
           {[...Array(5)].map((star, index) => {
             index += 1;
             return (

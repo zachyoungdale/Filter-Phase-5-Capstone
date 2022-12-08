@@ -15,7 +15,7 @@ function NavBar({ user, setUser }) {
     <div className="bg-black font-sans text-white">
       <nav className="flex justify-between items-center p-10">
         <button
-          className="font-extrabold text-5xl"
+          className="font-extrabold text-4xl hover:-translate-y-1 transition ease-in-out"
           onClick={() => navigate("/coffee-shops")}
         >
           Filter.

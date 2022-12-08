@@ -84,26 +84,26 @@ function CoffeeShopCard({
   return (
     <div>
       <div className="flex flex-col justify-center items-center bg-black p-6 text-white">
-        <h1 className="font-sans font-black text-6xl mb-3">{shop.name}</h1>
-        <h3 className="font-sans font-extrabold text-4xl mb-3">
+        <h1 className="font-sans font-black text-5xl mb-3">{shop.name}</h1>
+        <h3 className="font-sans font-extrabold text-3xl mb-3">
           {shop.city?.name}
         </h3>
-        <h2 className="font-sans font-extrabold text-3xl mb-3">
+        <h2 className="font-sans font-extrabold text-2xl mb-3 text-center">
           {shop.address}
         </h2>
         <div className="flex flex-row">
           <a href={shop.website}>
-            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3 hover:bg-gray-200">
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-xl font-bold m-3 hover:bg-gray-200">
               Website
             </button>
           </a>
           <a href={shop.socials}>
-            <button className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3  hover:bg-gray-200">
+            <button className="font-sans bg-white text-black p-2 rounded-xl text-xl font-bold m-3  hover:bg-gray-200">
               Socials
             </button>
           </a>
           <button
-            className="font-sans bg-white text-black p-2 rounded-xl text-2xl font-bold m-3  hover:bg-gray-200"
+            className="font-sans bg-white text-black p-2 rounded-xl text-xl font-bold m-3  hover:bg-gray-200"
             onClick={handleBookmark}
           >
             {bookmarkToggle.length > 0 ? "Bookmarked!" : "Bookmark"}
